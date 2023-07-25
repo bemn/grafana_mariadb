@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  database:
+    image: mariadb:10.3
+    volumes:
+      - ./data/mysql-data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    command:
+      - --max-allowed-packet=64M
+      - --innodb-buffer-pool-size=1G
+      - --innodb-log-file-size=256M
+      - --character-set-server=utf8
+      - --bind-address=0.0.0.0
+    networks:
+      - grafananet  
+
+  grafana:
+    image: ligero/grafana:8
+    restart: always
+    environment:
+      GF_SERVER_ROOT_URL: ${GF_SERVER_ROOT_URL}
+      GF_INSTALL_PLUGINS: grafana-clock-panel
+    ports:
+      - '3001:3001'
+    volumes:
+      - './data/grafana_storage:/var/lib/grafana'
+      - ./conf/grafana.ini:/etc/grafana/grafana.ini
+    networks:
+      - grafananet
+
+networks:
+  grafananet:
+    driver: bridge
