@@ -7,11 +7,7 @@ Este projeto Docker Compose fornece uma configuração para criar dois contêine
 - Docker e Docker Compose instalados no sistema.
 
 **Instruções**
-1. Clone este repositório em sua máquina local:
-
-```
-git clone https://github.com/seu-usuario/grafana_mariadb_docker.git
-```
+1. Clone este repositório em sua máquina local;
 
 2. Navegue para o diretório do projeto:
 
@@ -22,10 +18,10 @@ cd grafana_mariadb_docker
 3. Crie um arquivo `.env` no diretório do projeto com as variáveis de ambiente:
 
 ```
-MYSQL_ROOT_PASSWORD=ligerosmart
-MYSQL_DATABASE=ligerosmart
-MYSQL_USER=ligerosmart
-MYSQL_PASSWORD=ligerosmart
+MYSQL_ROOT_PASSWORD=grafpass
+MYSQL_DATABASE=grafana
+MYSQL_USER=grafana
+MYSQL_PASSWORD=grafpass
 GF_SERVER_ROOT_URL=http://my.grafana.server/
 ```
 
