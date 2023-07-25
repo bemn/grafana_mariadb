@@ -7,3 +7,5 @@ docker-compose.yml
 
 # Ignore MariaDB data directory (persistent data)
 /data/mysql-data/*
+
+.DS_Store
