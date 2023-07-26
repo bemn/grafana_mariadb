@@ -1,7 +1,7 @@
 **Projeto Docker Compose - Grafana e MariaDB**
 
 **Descrição**
-Este projeto Docker Compose fornece uma configuração para criar dois contêineres: um contêiner MariaDB para o banco de dados e um contêiner Grafana para a visualização de dados. A imagem do Grafana utilizada é fornecida pela equipe do Ligero. O Grafana estará disponível na porta 3001.
+Este projeto Docker Compose fornece uma configuração para criar dois contêineres: um contêiner MariaDB para o banco de dados e um contêiner Grafana para a visualização de dados. O Grafana estará disponível na porta 3001.
 
 **Requisitos**
 - Docker e Docker Compose instalados no sistema.
@@ -18,11 +18,13 @@ cd grafana_mariadb_docker
 3. Crie um arquivo `.env` no diretório do projeto com as variáveis de ambiente:
 
 ```
-MYSQL_ROOT_PASSWORD=grafpass
-MYSQL_DATABASE=grafana
-MYSQL_USER=grafana
-MYSQL_PASSWORD=grafpass
-GF_SERVER_ROOT_URL=http://my.grafana.server/
+DB_TYPE=mariadb
+DB_DBNAME=grafana_db
+DB_PORT=3306
+DB_USER=grafana_user
+DB_PASS=grafana_password
+DB_HOST=mysql
+JETTY_HOST=0.0.0.0
 ```
 
 4. Inicie os contêineres com o Docker Compose:
@@ -35,7 +37,7 @@ docker-compose up -d
 
 ```
 Usuário: admin
-Senha: ligero
+Senha: admin
 ```
 
 6. Agora você está pronto para configurar e visualizar seus painéis no Grafana.
