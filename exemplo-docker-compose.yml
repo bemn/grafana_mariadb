@@ -11,7 +11,9 @@ services:
     ports:
      - '3001:3001'
     volumes:
-     - ./data/grafana_storage:/var/lib/grafana
+     - grafana_storage:/var/lib/grafana
+     - grafana_custom_dashboards:/var/lib/grafana/dashboards
+     - grafana_logs:/var/log/grafana 
      - ./conf/grafana.ini:/etc/grafana/grafana.ini
     networks:
       - grafananet
@@ -36,3 +38,8 @@ services:
 networks:
   grafananet:
     driver: bridge
+    
+volumes:  # Definição dos novos volumes
+  grafana_storage:
+  grafana_custom_dashboards:
+  grafana_logs:
